@@ -8,8 +8,3 @@ test('sum all pass-in numbers', () => {
 })
  
 
-test('passed', ()=>{
-    expect(
-        sum(39,19)
-    ).toBe(58)
-})
