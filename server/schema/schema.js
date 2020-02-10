@@ -79,12 +79,12 @@ const RootQuery = new GraphQLObjectType( {
 const Mutation = new GraphQLObjectType({
     name: "Mutation",
     fields: {
-        addBooks: {
+        addBook: {
             type: BookType,
             args: {
                 name: { type: new GraphQLNonNull(GraphQLString) },
                 genre: { type: new GraphQLNonNull(GraphQLString) },
-                authorId: { type: new GraphQLNonNull(GraphQLID) }
+                authorId: { type: new GraphQLNonNull(GraphQLString) }
             },
             resolve(parent, args ) {
                 let newBook = new Book({
