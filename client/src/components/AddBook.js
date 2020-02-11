@@ -26,6 +26,11 @@ class AddBook extends Component {
                 },
                 refetchQueries: [{ query: getAllBooks }]
             });
+            this.setState({
+                name: "",
+                genre: "",
+                authorId: ""
+            })
     }
 
     getAuthors = () => {
@@ -42,17 +47,17 @@ class AddBook extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <div>
                         <label htmlFor="name">BookName: </label>
-                        <input type="text" id="name" onChange={this.handleOnChange}/>
+                        <input type="text" id="name" value={this.state.name} onChange={this.handleOnChange}/>
                     </div>
                     <br/>
                     <div>
                         <label >Genre: </label>
-                        <input type="text" id="genre" onChange={this.handleOnChange}/>
+                        <input type="text" id="genre" value={this.state.genre} onChange={this.handleOnChange}/>
                     </div>
                     <br/>
                     <div>
                         <label htmlFor="author">Author: </label>
-                        <select id="authorId" onChange={this.handleOnChange}>
+                        <select id="authorId" value={this.state.authorId} onChange={this.handleOnChange}>
                             <option>Select an author</option>
                             {this.getAuthors()}
                         </select>

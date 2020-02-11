@@ -9,8 +9,12 @@ class BookList extends Component {
         selectedBook: null
     }
 
+    resetSelectedBook = () => {
+        this.setState({
+            selectedBook: null
+        })
+    }
     
-
     displayBook = () => {
         let data = this.props.getAllBooks;
         if(data.loading){
@@ -25,28 +29,17 @@ class BookList extends Component {
             })
         }
     }
+  
     render() {
         return (
             <div>
                 <ul>
                     {this.displayBook()}
                 </ul>
-                <BookDetail _id={this.state.selectedBook}/>
+                <BookDetail _id={this.state.selectedBook} resetSelectedBook={this.resetSelectedBook} />
             </div>
         )
     }
 }
 
-export default graphql(getAllBooks,
-     { name: "getAllBooks",
-       option: (props) => {
-           return (
-            {
-               variables: {
-                    _id: props._id
-                }  
-            }
-           )
-       }
-     }
-     )(BookList);
+export default graphql(getAllBooks, {name: "getAllBooks"})(BookList);
