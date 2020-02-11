@@ -3,6 +3,7 @@ import { gql } from 'apollo-boost';
 const getOneBook = gql`
     query($_id: ID!){
         book(_id: $_id){
+            _id,
             name,
             genre,
             author{
@@ -47,5 +48,13 @@ const mutationAddBook = gql`
     }
 `
 
+const mutationDeleteBook = gql`
+    mutation($_id: ID!){
+        deleteBook(_id: $_id) {
+            name
+        }
+    }
+`
 
-export { getAllBooks, getAllAuthors, mutationAddBook, getOneBook };
+
+export { getAllBooks, getAllAuthors, mutationAddBook, getOneBook, mutationDeleteBook };
